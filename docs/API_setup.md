@@ -22,6 +22,12 @@ _Parent API_
 - `POST /api/parents` create parent
 eg. Body: `{ "name": "Papa", "phone": "9917354193", "email": "test@gmail.com", "student_scholar_no": "S001" }`
 
+_Teacher API_
+- `GET /api/teachers` Get all teachers
+- `POST /api/teachers` create teacher
+eg. Body: `{ "teacher_id": "T001", "name": "Marsaab", "subject": "Math", "email": "marsaab@vidhya.com" }`
+- `GET /api/teachers/T001` Get teacher by ID (for login)
+
 ## DB
 - Auto created at `/db/neurolearn.sqlite`
 - Schema auto-applied on server start

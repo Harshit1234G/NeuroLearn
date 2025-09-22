@@ -27,6 +27,15 @@ const schema = `
       student_scholar_no TEXT NOT NULL,
       FOREIGN KEY (student_scholar_no) REFERENCES students(scholar_no) ON DELETE CASCADE
    );
+
+   CREATE TABLE IF NOT EXISTS teachers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      teacher_id TEXT UNIQUE NOT NULL,
+      name TEXT NOT NULL,
+      subject TEXT,
+      email TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+   );
 `;
 
 db.exec(schema);

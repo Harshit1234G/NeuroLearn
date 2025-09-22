@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const studentRoutes = require('./routes/students');
 const parentRoutes = require('./routes/parents');
+const teacherRoutes = require('./routes/teachers');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/students', studentRoutes);
 app.use('/api/parents', parentRoutes);
+app.use('/api/teachers', teacherRoutes);
 
 app.get('/', (req, res) => {
    res.json({

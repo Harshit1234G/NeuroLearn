@@ -34,4 +34,20 @@
     - Student creation: success
     - parents creation: success (with student exist validation)
 
+---
 
+## Add teacher API
+
+### Database
+Added `teachers` table with `teacher_id, name, subject, email`
+
+### API Endpoints
+- `GET /api/teachers` list all teachers
+- `POST /api/teachers` create teacher
+- `GET /api/teachers/:teacher_id` get teacher by id for login
+
+### Testing
+- Tested via curl:
+    - teacher creation: success
+
+---
