@@ -8,7 +8,8 @@ from config import DEFAULT_MODEL, SMALL_MODEL
 class StudentState(TypedDict):
     name: str
     topics: list[str]
-
+    results: ...
+    diagnosis: str
 
 class BaseAgent:
     def __init__(
