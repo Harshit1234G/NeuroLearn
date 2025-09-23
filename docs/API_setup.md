@@ -16,11 +16,13 @@ _Student API_
 - `GET /api/students` Gets all students
 - `POST /api/students` Create student
 eg. Body: `{ "scholar_no": "S001", "name": "Dayal", "class": "8", "section": "A" }`
+- `GET /api/students/:S001` Get student by scholar no. (login simulation) 
 
 _Parent API_
 - `GET /api/parents` Get all parents
 - `POST /api/parents` create parent
 eg. Body: `{ "name": "Papa", "phone": "9917354193", "email": "test@gmail.com", "student_scholar_no": "S001" }`
+- `GET /api/parents/:id` Get parent by ID (login simulation)
 
 _Teacher API_
 - `GET /api/teachers` Get all teachers

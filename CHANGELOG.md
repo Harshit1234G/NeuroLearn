@@ -51,3 +51,13 @@ Added `teachers` table with `teacher_id, name, subject, email`
     - teacher creation: success
 
 ---
+
+## Login Simulation Setup
+
+### API Endpoints
+- `GET /api/students/:scholar_no` for student login
+- `GET /api/parents/:id` for parent login
+
+### Tested
+- Student Login: `GET /api/students/S001` returns correct student
+- Parent Login: `GET /api/parents/1` returns correct parent

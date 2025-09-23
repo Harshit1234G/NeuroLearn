@@ -1,12 +1,17 @@
 const db = require('../db/database');
 
+//: List all Parents {{{
+// GET /api/parents
 const getAllParents = (req, res) => {
    db.all('SELECT * FROM parents', (err, rows) => {
       if (err) return res.status(500).json({ error: err.message });
       res.json(rows);
    });
 };
+//: }}}
 
+//: Create Parent {{{
+// POST /api/parents
 const createParent = (req, res) => {
    const { name, phone, email, student_scholar_no } = req.body;
    
@@ -31,5 +36,22 @@ const createParent = (req, res) => {
       }
    );
 };
+//: }}}
 
-module.exports = { getAllParents, createParent };
+//: Login Simulation {{{
+// GET /api/parents/:id
+const getParentById = (req, res) => {
+   const { id } = req.params;
+   db.get(
+      'SELECT id, name, phone, email, student_scholar_no FROM parents WHERE id = ?',
+      [id],
+      (err, row) => {
+         if (err) return res.status(500).json({ error: err.message });
+         if (!row) return res.status(404).json({ error: "Parent not found!" });
+         res.json(row);
+      }
+   );
+};
+//: }}}
+
+module.exports = { getAllParents, createParent, getParentById };
