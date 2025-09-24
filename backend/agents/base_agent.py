@@ -10,6 +10,7 @@ class StudentState(TypedDict):
     topics: list[str]
     results: ...
     diagnosis: str
+    reports: dict[str, str]
 
 class BaseAgent:
     def __init__(
