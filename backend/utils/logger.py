@@ -2,6 +2,8 @@ import logging
 import os
 from datetime import datetime
 
+from backend.config import LOG_DIR
+
 # Global session log filename
 SESSION_LOG_FILE = None
 
@@ -20,7 +22,7 @@ def get_logger(name: str) -> logging.Logger:
 
     # Initialize session log file once
     if SESSION_LOG_FILE is None:
-        os.makedirs('logs', exist_ok= True)
+        os.makedirs(LOG_DIR, exist_ok= True)
         SESSION_LOG_FILE = datetime.now().strftime('logs/session_%Y-%m-%d_%H-%M-%S.log')
 
     # logging configuration

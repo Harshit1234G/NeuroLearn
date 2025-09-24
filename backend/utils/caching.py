@@ -1,10 +1,12 @@
 import os
 import json
 
+from backend.config import CACHE_DIR
+
 
 def save_state(state: dict, student: str) -> None:
     """Save the langgraph state for a given student."""
-    filename = os.path.join('cache', f'{sanitize_filename(student)}.json')
+    filename = os.path.join(CACHE_DIR, f'{sanitize_filename(student)}.json')
 
     with open(filename, 'w', encoding= 'utf-8') as f:
         json.dump(
@@ -17,7 +19,7 @@ def save_state(state: dict, student: str) -> None:
 
 def load_state(student: str) -> dict | None:
     """Load the langgraph state for a given student if it exists."""
-    filename = os.path.join('cache', f'{sanitize_filename(student)}.json')
+    filename = os.path.join(CACHE_DIR, f'{sanitize_filename(student)}.json')
 
     if os.path.exists(filename):
         with open(filename, 'r', encoding= 'utf-8') as f:

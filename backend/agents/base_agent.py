@@ -2,7 +2,7 @@ from typing_extensions import TypedDict
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-from config import DEFAULT_MODEL, SMALL_MODEL
+from backend.config import DEFAULT_MODEL, SMALL_MODEL
 
 
 class StudentState(TypedDict):

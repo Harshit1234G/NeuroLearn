@@ -1,3 +1,3 @@
-from .settings import DEFAULT_MODEL, SMALL_MODEL
+from .settings import *
 
-__all__ = [DEFAULT_MODEL, SMALL_MODEL]
+__all__ = [DEFAULT_MODEL, SMALL_MODEL, CACHE_DIR, LOG_DIR, DB_PATH, MAX_ITERATIONS, MAX_QUES]
