@@ -8,7 +8,7 @@ from backend.config import DEFAULT_MODEL, SMALL_MODEL
 
 class StudentState(TypedDict):
     name: str
-    tags: list[str]
+    tags: str
     already_asked: list[int]
     current_difficulty: int
     assessment_results: dict[str, Any]

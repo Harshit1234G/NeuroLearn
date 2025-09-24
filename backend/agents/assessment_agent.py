@@ -13,8 +13,17 @@ class AssessmentAgent:
         self.logger.info('Assessment Agent Initialized.')
 
 
-    def _get_question(self) -> dict[str, Any]:
-        ...
+    def _get_question(self, difficulty: str, tags: str) -> dict[str, Any]:
+        filtered_df = self.dataset.loc[
+            (self.dataset['difficulty'] == difficulty)
+            & 
+            (self.dataset['tags'] == tags)
+        ]
+        row = filtered_df.sample(n= 1).iloc[0]
+
+        self.logger.info(f'Successfully selected a question, ID: {row['id']}.')
+
+        return row.to_dict()
 
 
     def _change_difficulty_level(self, current_level: int, *, correct: bool = True) -> int:
@@ -24,7 +33,10 @@ class AssessmentAgent:
         else:
             current_level -= 1
 
-        return current_level if current_level <= 10 else 10
+        level = current_level if current_level <= 10 else 10
+        self.logger.info(f'Difficulty level: {level}.')
+
+        return level
     
 
     def _decide_difficulty(self, level: int) -> str:
@@ -42,6 +54,21 @@ class AssessmentAgent:
 
         
     def run(self, state: StudentState) -> StudentState:
+        self.logger.info('Assessment Agent started.')
+
         for i in range(MAX_QUES):
-            if state.get('current_difficulty') < 0:
-                return
+            difficulty = self._decide_difficulty(state.get('current_difficulty', 2))
+            self.logger.info(f'Decided difficulty: {difficulty}')
+
+            que = self._get_question(difficulty, state.get('tags'))
+            state['already_asked'].append(que['id'])
+
+            print(f'Question {i + 1}: {que['question_text']}\n')
+            print(f'A. {que['option_a']:<20}B. {que['option_b']}\n')
+            print(f'C. {que['option_c']:<20}D. {que['option_d']}\n')
+            answer = input('\nAnswer: ').strip().lower()
+
+            status = answer == que['answer']
+
+            print(f'\nResult: {"Pass" if status else "Fail"}\n')
+            state['current_difficulty'] = self._change_difficulty_level(state['current_difficulty'], correct= (status))
