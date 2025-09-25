@@ -146,5 +146,13 @@
       "status": "Correct"
     }
   ],
-  "total_score": 10
+  "total_score": 10,
+  "diagnosis": {
+    "diagnosis": "Harshit demonstrates strong performance across all assessment aspects, achieving a perfect score. His ability to listen, grasp, retain, and apply knowledge is evident, particularly in handling percentage-related problems, which suggests a solid understanding of mathematical concepts.",
+    "recommendations": "To maintain and further enhance his skills, Harshit should engage in more complex problem-solving scenarios that challenge his application of concepts in real-world contexts. Additionally, exploring advanced topics in percentages and related areas can help deepen his understanding and prepare him for future assessments.",
+    "listening": 100,
+    "grasping": 100,
+    "retention": 100,
+    "application": 100
+  }
 }

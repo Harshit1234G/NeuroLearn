@@ -146,5 +146,13 @@
       "status": "Wrong"
     }
   ],
-  "total_score": 4
+  "total_score": 4,
+  "diagnosis": {
+    "diagnosis": "Ram demonstrates a solid grasp of basic percentage concepts, as evidenced by his correct answers on simpler questions. However, he struggles with more complex problems, indicating weaknesses in retention and application of knowledge.",
+    "recommendations": "To improve, Ram should focus on practicing more challenging percentage problems to enhance his retention and application skills. Engaging in targeted exercises that require multi-step reasoning will help him build confidence and proficiency in these areas.",
+    "listening": 70,
+    "grasping": 80,
+    "retention": 50,
+    "application": 40
+  }
 }
