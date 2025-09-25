@@ -6,6 +6,7 @@ from backend.config import CACHE_DIR
 
 def save_state(state: dict, student: str) -> None:
     """Save the langgraph state for a given student."""
+    os.makedirs(CACHE_DIR, exist_ok= True)
     filename = os.path.join(CACHE_DIR, f'{sanitize_filename(student)}.json')
 
     with open(filename, 'w', encoding= 'utf-8') as f:

@@ -28,7 +28,7 @@ class AssessmentAgent:
         filtered_df = self.dataset.loc[
             (self.dataset['difficulty'] == difficulty) & 
             (self.dataset['tags'] == state.get('tags')) &
-            (~self.dataset['id'].isin(state.get('already_asked', set())))
+            (~self.dataset['id'].isin(state.get('already_asked', [])))
         ]
 
         if filtered_df.empty:
@@ -109,7 +109,7 @@ class AssessmentAgent:
         try: 
             for i in range(MAX_QUES):
                 que = self._get_question(state)
-                state.setdefault('already_asked', set()).add(que['id'])
+                state.setdefault('already_asked', []).append(que['id'])
 
                 answer, status = self._ask_question(i + 1, que)
 
