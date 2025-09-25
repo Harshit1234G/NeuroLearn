@@ -1,5 +1,6 @@
-from typing import Any
+from typing import Any, Set, Dict, List
 from typing_extensions import TypedDict
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
@@ -9,12 +10,13 @@ from backend.config import DEFAULT_MODEL, SMALL_MODEL
 class StudentState(TypedDict):
     name: str
     tags: str
-    already_asked: list[int]
+    already_asked: Set[int]
     current_difficulty: int
-    assessment_results: dict[str, Any]
+    assessment_results: List[Dict[str, Any]]
     diagnosis: str
-    reports: dict[str, str]
+    reports: Dict[str, str]
     tutor_notes: str
+
 
 class BaseAgent:
     def __init__(
