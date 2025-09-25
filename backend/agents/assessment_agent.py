@@ -9,6 +9,8 @@ from backend.config import CSV_PATH, MAX_QUES
 class AssessmentAgent:
     def __init__(self):
         self.logger = get_logger(self.__class__.__name__)
+        self.name = 'assessment_agent'
+        
         try:
             self.dataset = pd.read_csv(CSV_PATH)
             self.logger.info(f'Successfully loaded the dataset from {CSV_PATH}.')

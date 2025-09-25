@@ -51,8 +51,20 @@ class ReportAgent(BaseAgent):
                     '   "parent_report": "string",\n'
                     "}}\n"
                 ),
-                ("human", "STUDENT NAME: {name}\n\nDIAGNOSIS: {diagnosis}\n\nRECOMMENDATIONS: {recommendations}")
+                (
+                    "human", 
+                    "STUDENT NAME: {name}\n\nDIAGNOSIS: {diagnosis}\n\nRECOMMENDATIONS: {recommendations}"
+                )
             ]
         )
 
-        super().__init__()
+        super().__init__(
+            name= 'report_agent',
+            instructions= prompt,
+            temperature= 0.3,
+            use_small_model= True
+        )
+        self.logger.info('Report Agent Intialized.')
+
+
+    

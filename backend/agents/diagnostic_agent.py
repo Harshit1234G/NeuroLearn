@@ -54,7 +54,7 @@ class DiagnosticAgent(BaseAgent):
         )
 
         super().__init__(
-            name= 'diagnostic',
+            name= 'diagnostic_agent',
             instructions= prompt,
             temperature= 0.0,
             use_small_model= True
