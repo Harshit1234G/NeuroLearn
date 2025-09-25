@@ -88,7 +88,7 @@ class AssessmentAgent:
             print(f'C. {que['option_c']:<20}D. {que['option_d']}\n')
 
             answer = input('Answer: ').strip().lower()
-            status = answer == que['answer']
+            status = answer == que['answer'].lower()   # added lower(), because of dataset incosistency
 
             print(f'\nResult: {"Correct" if status else "Wrong"}\n')
             return answer, status
