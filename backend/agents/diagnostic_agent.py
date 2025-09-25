@@ -71,20 +71,25 @@ class DiagnosticAgent(BaseAgent):
         name = state.get('name')
         tags = state.get('tags')
 
-        # Diagnosing assessment
-        self.logger.info(f'Diagnosing assessment of Student: {name}, on Tags: {tags} ...')
+        try:
+            # Diagnosing assessment
+            self.logger.info(f'Diagnosing assessment of Student: {name}, on Tags: {tags} ...')
+            diagnosis = self.llm.invoke(
+                self.instructions.format_messages(
+                    name= name, 
+                    results= json.dumps(state.get('assessment_results')),
+                    score= state.get('total_score'), 
+                    max_ques= MAX_QUES
+                )
+            ).content.strip()
+            self.logger.info('LLM response received.')
 
-        diagnosis = self.llm.invoke(
-            self.instructions.format_messages(
-                name= name, 
-                results= json.dumps(state.get('assessment_results')),
-                score= state.get('total_score'), 
-                max_ques= MAX_QUES
-            )
-        ).content.strip()
-
-        self.logger.info(f'Successfully diagnosed assessment of Student: {name}, on Tags: {tags}.')
-        json_output = json.loads(diagnosis)
-        # TODO: Add error handling and logging messages for diagnosis and json parsing.
-
-        return {'diagnosis': diagnosis}
+            json_output = json.loads(diagnosis)
+            self.logger.info('Successfully parsed JSON from the LLM response.')
+            
+            self.logger.info(f'Successfully diagnosed assessment of Student: {name}, on Tags: {tags}.')
+            return {'diagnosis': json_output}
+        
+        except json.JSONDecodeError as e:
+            self.logger.error(f'Failed to parse LLM response as JSON: {e}')
+            self.logger.debug(f'Raw LLM output:\n{diagnosis}')
