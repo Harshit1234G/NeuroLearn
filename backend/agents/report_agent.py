@@ -67,4 +67,28 @@ class ReportAgent(BaseAgent):
         self.logger.info('Report Agent Intialized.')
 
 
-    
+    def run(self, state):
+        if state.get('diagnosis') is None:
+            self.logger.error('No value for `diagnosis` was provided.')
+            raise ValueError('No value for `diagnosis` was provided.')
+
+        try:
+            self.logger.info('Generating report for the assessment...')
+            reports = self.llm.invoke(
+                self.instructions.format_messages(
+                    name= state.get('name'),
+                    diagnosis= state.get('diagnosis')['diagnosis'],
+                    recommendations= state.get('diagnosis')['recommendations']
+                )
+            ).content.strip()
+            self.logger.info('LLM response received.')
+
+            json_output = json.loads(reports)
+            self.logger.info('Successfully parsed JSON from the LLM response.')
+
+            self.logger.info('Generated reports for student, teacher, and parent.')
+            return {'reports': json_output}
+
+        except json.JSONDecodeError as e:
+            self.logger.error(f'Failed to parse LLM response as JSON: {e}')
+            self.logger.debug(f'Raw LLM output:\n{reports}')
