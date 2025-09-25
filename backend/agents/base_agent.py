@@ -14,7 +14,7 @@ class StudentState(TypedDict):
     current_difficulty: int
     assessment_results: List[Dict[str, Any]]
     total_score: int
-    diagnosis: str
+    diagnosis: Dict[str, str | int]
     reports: Dict[str, str]
     tutor_notes: str
 
