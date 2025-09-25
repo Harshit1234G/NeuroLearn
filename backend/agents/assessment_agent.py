@@ -36,18 +36,18 @@ class AssessmentAgent:
     def _change_difficulty_level(
             self, 
             current_level: int, 
-            *, 
-            correct: bool = True
+            correct: bool,
+            *,
+            up: int = 2,
+            down: int = 1
         ) -> int:
         if correct:
-            current_level += 2
+            level = min(current_level + up, 10)
 
         else:
-            current_level -= 1
+            level = max(current_level - down, 0)
 
-        level = current_level if current_level <= 10 else 10
         self.logger.info(f'Difficulty level: {level}.')
-
         return level
     
 
@@ -68,15 +68,13 @@ class AssessmentAgent:
         return difficulty
     
 
-    def _input(self, state: StudentState) -> StudentState:
+    def _assess(self, state: StudentState) -> StudentState:
         assessment_results = []
+        score = 0
 
         for i in range(MAX_QUES):
-            if state.get('current_difficulty') < 0:
-                ...
-
             que = self._get_question(state)
-            state['already_asked'].append(que['id'])
+            state['already_asked'].add(que['id'])
 
             print(f'Question {i + 1}: {que['question_text']}\n')
             print(f'A. {que['option_a']:<20}B. {que['option_b']}\n')
@@ -84,18 +82,25 @@ class AssessmentAgent:
             answer = input('\nAnswer: ').strip().lower()
 
             status = answer == que['answer']
+            print(f'\nResult: {"Correct" if status else "Wrong"}\n')
 
-            print(f'\nResult: {"Pass" if status else "Fail"}\n')
+            if status:
+                score += 1
+
             state['current_difficulty'] = self._change_difficulty_level(state['current_difficulty'], correct= status)
 
+            que['student_answer'] = answer
+            que['status'] = "Correct" if status else "Wrong"
+            assessment_results.append(que)
 
-    def _check_answers(self, state: StudentState) -> StudentState:
-        ...
+        state['assessment_results'] = assessment_results
+        state['total_score'] = score
+
+        self.logger.info(f'Successfully completed the assessment of {state.get('name')} on `{state.get('tags')}`.')
+        return state
 
         
     def run(self, state: StudentState) -> StudentState:
         self.logger.info('Assessment Agent started.')
-        state = self._input(state)
-        state = self._check_answers(state)
-
-        return state
+        updated_state = self._assess(state)
+        return updated_state
