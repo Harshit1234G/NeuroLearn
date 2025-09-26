@@ -18,6 +18,17 @@ _Student API_
 eg. Body: `{ "scholar_no": "S001", "name": "Dayal", "class": "8", "section": "A" }`
 - `GET /api/students/:S001` Get student by scholar no. (login simulation) 
 
+_Auth API_
+- `POST /api/auth/register` Role based register
+eg. Body: `{ "role": "student", "scholar_no": "S001", "name": "...", "email": "...", "password": "..."}`
+- `POST /api/auth/login` Role based login
+eg. Body: `{ "email": "...", "password": "...", "role": "student" }`
+
+_Results API_
+- `POST /api/results` save result of student
+eg. Body: `{ "student_scholar_no": "S001", "topic": "Percentage", "accuracy": 85.5 }`
+- `GET /api/results?student_scholar_no=S001` get result of student using query
+
 _Parent API_
 - `GET /api/parents` Get all parents
 - `POST /api/parents` create parent

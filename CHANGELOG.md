@@ -61,3 +61,23 @@ Added `teachers` table with `teacher_id, name, subject, email`
 ### Tested
 - Student Login: `GET /api/students/S001` returns correct student
 - Parent Login: `GET /api/parents/1` returns correct parent
+
+---
+
+## Auth + Results system
+
+### Tables
+- [student, teacher, parent] added [email, password]
+- student_results tracks per topic accuracy
+
+### API Endpoints
+- `/api/auth/register` + `/api/auth/login` = role-based
+- `api/results` = saves + fetch results
+
+### Security
+- Passwords hashed with bcrypt
+- Mock tokens for UI state
+
+---
+
+
