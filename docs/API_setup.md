@@ -7,7 +7,7 @@
 ## Setup
 1. `cd api/`
 2. `npm install`
-3. `npm run dev` Starts server at http://localhost:3000
+3. `npm run dev` Starts server at http://localhost:3010
 
 ## Endpoints
 - `GET /` Health Check

@@ -80,4 +80,10 @@ Added `teachers` table with `teacher_id, name, subject, email`
 
 ---
 
+## Docs DB Schema doc
+
+Added db_schema.md doc which has all tables schema...
+
+---
+
 
