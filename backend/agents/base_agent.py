@@ -1,4 +1,4 @@
-from typing import Any, Set, Dict, List
+from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 from langchain_core.prompts import ChatPromptTemplate
@@ -10,7 +10,7 @@ from backend.config import DEFAULT_MODEL, SMALL_MODEL
 class StudentState(TypedDict):
     name: str
     tags: str
-    already_asked: Set[int]
+    already_asked: List[int]
     current_difficulty: int
     assessment_results: List[Dict[str, Any]]
     total_score: int

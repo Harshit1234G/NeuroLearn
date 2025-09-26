@@ -6,5 +6,4 @@ SMALL_MODEL = 'gpt-4o-mini'
 CACHE_DIR = 'cache'
 LOG_DIR = 'logs'
 CSV_PATH = os.path.join('db', 'percentages_dataset.csv')
-MAX_ITERATIONS = 3
 MAX_QUES = 10
