@@ -3,5 +3,6 @@ from .assessment_agent import AssessmentAgent
 from .diagnostic_agent import DiagnosticAgent
 from .report_agent import ReportAgent
 from .tutor_agent import TutorAgent
+from .orchestration import NeuroLearn
 
-__all__ = [BaseAgent, StudentState, AssessmentAgent, DiagnosticAgent, ReportAgent, TutorAgent]
+__all__ = [BaseAgent, StudentState, AssessmentAgent, DiagnosticAgent, ReportAgent, TutorAgent, NeuroLearn]
