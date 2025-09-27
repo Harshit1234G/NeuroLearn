@@ -58,5 +58,26 @@ class NeuroLearn:
         self.logger.info('Graph compilation successfull, NeuroLearn Initialized.')
 
 
-    def _is_all_correct(state: StudentState) -> bool:
-        return MAX_QUES == state.get('total_score', 0)
+    def _is_all_correct(self, state: StudentState) -> bool:
+        con = MAX_QUES == state.get('total_score', 0)
+        self.logger.info(f'Are all answers correct: {con}')
+        return con
+    
+
+    def run(self, student_name: str, tags: str) -> StudentState:
+        # TODO: make it loadable from saved state, and error handling
+        # TODO: give default diagnosis if all questions are correct
+        # TODO: Add proper logging
+        state = state = {
+            'name': student_name,
+            'tags': tags,
+            'already_asked': [],
+            'current_difficulty': 2
+        }
+        state = self.graph.invoke(
+            state,
+            config= {
+                'configurable': {'thread_id': f'{student_name}_{tags}'}
+            }
+        )
+        return state
