@@ -13,10 +13,28 @@ import { fetchStudentReports } from '../../api/api.js'
 export default function StudentDashboard() {
   const { user } = useAuth()
   const [reports, setReports] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetchStudentReports(user.id).then(setReports)
-  }, [user.id])
+    const loadReports = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        const data = await fetchStudentReports(user.id, user.scholar_no || user.id)
+        setReports(data)
+      } catch (err) {
+        setError(err.message || 'Failed to load reports')
+        console.error('Failed to load reports:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    if (user?.id) {
+      loadReports()
+    }
+  }, [user.id, user.scholar_no])
 
   return (
     <div className="flex gap-6">
@@ -52,7 +70,22 @@ export default function StudentDashboard() {
 
         <section>
           <h3 className="font-semibold mb-2">Past Reports</h3>
-          {reports.length === 0 ? (
+          {loading ? (
+            <Card className="p-6">
+              <p className="text-sm text-gray-600">Loading reports...</p>
+            </Card>
+          ) : error ? (
+            <Card className="p-6">
+              <p className="text-sm text-red-600">Error: {error}</p>
+              <Button 
+                variant="outline" 
+                className="mt-2" 
+                onClick={() => window.location.reload()}
+              >
+                Retry
+              </Button>
+            </Card>
+          ) : reports.length === 0 ? (
             <p className="text-sm text-gray-600">No reports yet. Take an assessment to see your progress.</p>
           ) : (
             <Card className="divide-y">

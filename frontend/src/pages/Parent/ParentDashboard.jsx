@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext.jsx'
-import { fetchStudentReports, mockStudents } from '../../api/api.js'
+import { fetchStudentReports, getStudentByScholarNo } from '../../api/api.js'
 import Card from '../../components/ui/Card.jsx'
 import Sidebar from '../../components/ui/Sidebar.jsx'
 
 export default function ParentDashboard() {
   const { user } = useAuth()
-  // For demo: parent is tied to first mock student
-  const child = mockStudents()[0]
   const [reports, setReports] = useState([])
+  const [child, setChild] = useState(null)
 
   useEffect(() => {
-    fetchStudentReports(child.id).then(setReports)
-  }, [child.id])
+    if (user?.student_scholar_no) {
+      // Get child's details from API
+      getStudentByScholarNo(user.student_scholar_no)
+        .then(studentData => {
+          setChild(studentData)
+          return fetchStudentReports(studentData.scholar_no, studentData.scholar_no)
+        })
+        .then(setReports)
+        .catch(error => {
+          console.error('Failed to fetch child data:', error)
+          // Fallback to mock data
+          setChild({ name: 'Child', scholar_no: user.student_scholar_no })
+          fetchStudentReports(user.student_scholar_no).then(setReports)
+        })
+    }
+  }, [user?.student_scholar_no])
 
   return (
     <div className="flex gap-6">
@@ -20,7 +33,7 @@ export default function ParentDashboard() {
       <div className="flex-1 space-y-6">
         <Card className="p-6">
           <h2 className="text-xl font-semibold">Welcome, {user.name}</h2>
-          <p className="text-gray-600">Viewing reports for: {child.name}</p>
+          <p className="text-gray-600">Viewing reports for: {child?.name || 'Loading...'}</p>
         </Card>
 
         {reports.length === 0 ? (

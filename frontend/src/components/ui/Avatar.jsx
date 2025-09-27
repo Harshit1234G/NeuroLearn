@@ -12,3 +12,4 @@ export default function Avatar({ name = 'Student', size = 40 }) {
 }
 
 
+
