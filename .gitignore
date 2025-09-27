@@ -3,3 +3,4 @@ api/node_modules/
 test.ipynb
 __pycache__
 logs
+frontend/node_modules/
