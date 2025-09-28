@@ -6,6 +6,7 @@ const parentRoutes = require('./routes/parents');
 const teacherRoutes = require('./routes/teachers');
 const authRoutes = require('./routes/auth');
 const resultRoutes = require('./routes/results');
+const assessmentRoutes = require('./routes/assessment');
 
 const app = express();
 const PORT = process.env.PORT || 3010;
@@ -17,6 +18,8 @@ app.use('/api/parents', parentRoutes);
 app.use('/api/teachers', teacherRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/results', resultRoutes);
+app.use('/api/assessment', assessmentRoutes);
+
 
 app.get('/', (req, res) => {
    res.json({

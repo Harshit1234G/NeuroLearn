@@ -50,6 +50,51 @@ const schema = `
       FOREIGN KEY (student_scholar_no) REFERENCES students(scholar_no)
    );
 
+   CREATE TABLE IF NOT EXISTS questions (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     question_text TEXT NOT NULL,
+     option_a TEXT NOT NULL,
+     option_b TEXT NOT NULL,
+     option_c TEXT NOT NULL,
+     option_d TEXT NOT NULL,
+     correct_option TEXT NOT NULL,
+     difficulty TEXT NOT NULL,
+     tags TEXT NOT NULL
+   );
+
+   CREATE TABLE IF NOT EXISTS assessment_sessions (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     student_scholar_no TEXT NOT NULL,
+     topic TEXT NOT NULL,
+     current_difficulty INTEGER DEFAULT 0 CHECK(current_difficulty BETWEEN 0 AND 10),
+     total_score INTEGER DEFAULT 0,
+     completed BOOLEAN DEFAULT 0,
+     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (student_scholar_no) REFERENCES students(scholar_no)
+     -- REMOVE UNIQUE constraint entirely
+   );
+
+   CREATE TABLE IF NOT EXISTS assessment_responses (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     session_id INTEGER NOT NULL,
+     question_id INTEGER NOT NULL,
+     student_answer TEXT NOT NULL,
+     is_correct BOOLEAN NOT NULL,
+     FOREIGN KEY (session_id) REFERENCES assessment_sessions(id) ON DELETE CASCADE
+   );
+
+   CREATE TABLE IF NOT EXISTS ai_reports (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     session_id INTEGER NOT NULL,
+     diagnosis TEXT,                     -- JSON or text
+     student_report TEXT,
+     teacher_report TEXT,
+     parent_report TEXT,
+     tutor_notes TEXT,
+     generated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (session_id) REFERENCES assessment_sessions(id) ON DELETE CASCADE
+   );
+   
 `;
 
 db.exec(schema);
