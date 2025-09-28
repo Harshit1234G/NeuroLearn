@@ -3,7 +3,7 @@ from langgraph.checkpoint.memory import MemorySaver
 
 from backend.agents import (
     StudentState,
-    AssessmentAgent,
+    # AssessmentAgent,
     DiagnosticAgent,
     ReportAgent,
     TutorAgent
@@ -17,7 +17,7 @@ class NeuroLearn:
         self.logger = get_logger(self.__class__.__name__)
 
         # initialize agents
-        assessment = AssessmentAgent()
+        # assessment = AssessmentAgent()
         diagnostic = DiagnosticAgent()
         report = ReportAgent()
         tutor = TutorAgent()
@@ -26,21 +26,23 @@ class NeuroLearn:
         builder = StateGraph(StudentState)
 
         # adding nodes
-        builder.add_node(assessment.name, assessment.run)
+        # builder.add_node(assessment.name, assessment.run)
         builder.add_node(diagnostic.name, diagnostic.run)
         builder.add_node(report.name, report.run)
         builder.add_node(tutor.name, tutor.run)
 
         # adding edges and coditional edges
-        builder.set_entry_point(assessment.name)
-        builder.add_conditional_edges(
-            assessment.name,
-            self._is_all_correct,
-            {
-                True: report.name,
-                False: diagnostic.name
-            }
-        )
+
+        # builder.set_entry_point(assessment.name)
+        # builder.add_conditional_edges(
+        #     assessment.name,
+        #     self._is_all_correct,
+        #     {
+        #         True: report.name,
+        #         False: diagnostic.name
+        #     }
+        # )
+        builder.set_entry_point(diagnostic.name)
         builder.add_edge(diagnostic.name, report.name)
         builder.add_conditional_edges(
             report.name,
