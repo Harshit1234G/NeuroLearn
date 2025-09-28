@@ -40,6 +40,12 @@ eg. Body: `{ "sessionId": 1, "questionId": 7, "submitAnswer": "c" }`
 - `GET /api/assessment/report/1` Get final report after 10 question
 eg. Response `{ "student": "Rahul", "topic": "Percentage", "score": 8, "diagnosis": "Strong grasp of concepts", "student_report": "...", "teacher_report": "...", "parent_report": "..." }`
 
+_AI Reports API_
+- `POST /api/ai-reports` Save ai generated report (for AI dev)
+eg. Body: `{ "session_id": 1, "diagnosis": "Strong grasp of concepts", "student_report": "...", "teacher_report": "...", "parent_report": "...", "tutor_notes": "..." }`
+- `GET /api/ai-reports/1` Get report by session ID (for UI)
+eg. Response Same as POST body + id, generated_at
+
 _Results API_
 - `POST /api/results` save result of student
 eg. Body: `{ "student_scholar_no": "S001", "topic": "Percentage", "accuracy": 85.5 }`
