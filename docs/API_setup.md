@@ -24,6 +24,22 @@ eg. Body: `{ "role": "student", "scholar_no": "S001", "name": "...", "email": ".
 - `POST /api/auth/login` Role based login
 eg. Body: `{ "email": "...", "password": "...", "role": "student" }`
 
+_Assessment API_
+- `POST /api/assessment/start` start/resume assessment
+eg. Body: `{ "scholar_no": "S001", "topic": "Percentages" }`
+    Response `{ "sessionId": 1, "message": "Assessment Started" }`
+- `GET /api/assessment/question/1` 
+eg. Response `{ 
+                "question": { "id": 7, "question_text": "...", "option_a": "...", ...}
+                "sessionId": 1,
+                "questionNumber": 1
+            }`
+- `POST /api/assessment/answer` submit answer
+eg. Body: `{ "sessionId": 1, "questionId": 7, "submitAnswer": "c" }`
+    Response `{ "isCorrect": true, "currentScore": 1, "completed": false, "nextDifficulty": "Easy" }`
+- `GET /api/assessment/report/1` Get final report after 10 question
+eg. Response `{ "student": "Rahul", "topic": "Percentage", "score": 8, "diagnosis": "Strong grasp of concepts", "student_report": "...", "teacher_report": "...", "parent_report": "..." }`
+
 _Results API_
 - `POST /api/results` save result of student
 eg. Body: `{ "student_scholar_no": "S001", "topic": "Percentage", "accuracy": 85.5 }`

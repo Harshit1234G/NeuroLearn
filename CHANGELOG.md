@@ -86,4 +86,10 @@ Added db_schema.md doc which has all tables schema...
 
 ---
 
+## Adaptive Assessment System 
 
+- Added assessment flow: start → questions → answers → report
+- Adaptive difficulty: +2 for correct, -1 for wrong (0-10 levels)
+- Session management: auto-resume incomplete assessments
+- Final reports with student/teacher/parent views
+     
