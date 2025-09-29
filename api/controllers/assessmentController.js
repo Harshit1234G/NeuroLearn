@@ -85,22 +85,73 @@ const getNextQuestion = (req, res) => {
           const notInClause = answeredIds.length > 0 
             ? `AND id NOT IN (${answeredIds.map(() => '?').join(',')})`
             : '';
-          const params = [session.topic, difficultyText, ...answeredIds];
 
-          db.get(`
+          const baseParams = [...answeredIds];
+
+          // 1) Primary: same tag + exact difficulty
+          const q1 = `
             SELECT id, question_text, option_a, option_b, option_c, option_d, correct_option, difficulty, tags
-            FROM questions 
+            FROM questions
             WHERE tags = ? AND difficulty = ? ${notInClause}
             ORDER BY RANDOM() LIMIT 1
-          `, params, (err, question) => {
-            if (err) return res.status(500).json({ error: 'Question fetch failed' });
-            if (!question) return res.json({ completed: true });
+          `;
 
-            res.json({ 
-              question, 
-              sessionId: session.id, 
-              questionNumber: responses.length + 1 
+          const tryFallbacks = () => {
+            // 2) Fallback A: same tag, any difficulty
+            const q2 = `
+              SELECT id, question_text, option_a, option_b, option_c, option_d, correct_option, difficulty, tags
+              FROM questions
+              WHERE tags = ? ${notInClause}
+              ORDER BY RANDOM() LIMIT 1
+            `;
+            const p2 = [session.topic, ...baseParams];
+
+            db.get(q2, p2, (e2, question2) => {
+              if (e2) return res.status(500).json({ error: 'Question fallback failed' });
+              if (question2) {
+                return res.json({
+                  question: question2,
+                  sessionId: session.id,
+                  questionNumber: responses.length + 1
+                });
+              }
+
+              // 3) Fallback B: any tag, any difficulty
+              const q3 = `
+                SELECT id, question_text, option_a, option_b, option_c, option_d, correct_option, difficulty, tags
+                FROM questions
+                WHERE 1=1 ${notInClause}
+                ORDER BY RANDOM() LIMIT 1
+              `;
+              const p3 = [...baseParams];
+              db.get(q3, p3, (e3, question3) => {
+                if (e3) return res.status(500).json({ error: 'Question fallback failed' });
+                if (!question3) {
+                  // No inventory at all → end session early
+                  db.run(`UPDATE assessment_sessions SET completed = 1 WHERE id = ?`, [sessionId]);
+                  return res.json({ completed: true });
+                }
+                return res.json({
+                  question: question3,
+                  sessionId: session.id,
+                  questionNumber: responses.length + 1
+                });
+              });
             });
+          };
+
+          const p1 = [session.topic, difficultyText, ...baseParams];
+          db.get(q1, p1, (e1, question1) => {
+            if (e1) return res.status(500).json({ error: 'Question fetch failed' });
+            if (question1) {
+              return res.json({
+                question: question1,
+                sessionId: session.id,
+                questionNumber: responses.length + 1
+              });
+            }
+            // No match at exact difficulty → attempt fallbacks mirroring agent
+            tryFallbacks();
           });
         }
       );
@@ -196,20 +247,59 @@ const getReport = (req, res) => {
     if (err) return res.status(500).json({ error: 'DB error' });
     if (!session) return res.status(404).json({ error: 'Session not found' });
     if (!session.completed) return res.status(400).json({ error: 'Assessment not completed' });
+    
+    // Build assessment_result array from responses joined with questions
+    db.all(`
+      SELECT 
+        q.id AS id,
+        q.question_text AS question_text,
+        q.option_a AS option_a,
+        q.option_b AS option_b,
+        q.option_c AS option_c,
+        q.option_d AS option_d,
+        q.correct_option AS answer,
+        q.difficulty AS difficulty,
+        q.tags AS tags,
+        ar.student_answer AS student_answer,
+        ar.is_correct AS is_correct
+      FROM assessment_responses ar
+      JOIN questions q ON ar.question_id = q.id
+      WHERE ar.session_id = ?
+      ORDER BY ar.id ASC
+    `, [sessionId], (respErr, rows) => {
+      if (respErr) return res.status(500).json({ error: 'Responses fetch failed' });
 
-    const diagnosis = session.total_score >= 7 
-      ? "Strong grasp of concepts" 
-      : "Needs more practice on complex problems";
+      const assessment_result = rows.map(r => ({
+        id: r.id,
+        question_text: r.question_text,
+        option_a: r.option_a,
+        option_b: r.option_b,
+        option_c: r.option_c,
+        option_d: r.option_d,
+        answer: r.answer,
+        difficulty: r.difficulty,
+        tags: r.tags,
+        student_answer: r.student_answer,
+        status: r.is_correct ? 'Correct' : 'Wrong'
+      }));
 
-    res.json({
-      student: session.name,
-      topic: session.topic,
-      score: session.total_score,
-      diagnosis,
-      recommendations: "Practice more questions on this topic",
-      student_report: `# Hey ${session.name}!\nYou scored ${session.total_score}/10 on ${session.topic}. ${diagnosis}`,
-      teacher_report: `# ${session.name}'s Report\nScore: ${session.total_score}/10\n${diagnosis}`,
-      parent_report: `Dear Parent, ${session.name} scored ${session.total_score}/10. ${diagnosis}`
+      const diagnosis = session.total_score >= 7 
+        ? "Strong grasp of concepts" 
+        : "Needs more practice on complex problems";
+
+      res.json({
+        student: session.name,
+        topic: session.topic,
+        score: session.total_score,
+        diagnosis,
+        recommendations: "Practice more questions on this topic",
+        student_report: `# Hey ${session.name}!\nYou scored ${session.total_score}/10 on ${session.topic}. ${diagnosis}`,
+        teacher_report: `# ${session.name}'s Report\nScore: ${session.total_score}/10\n${diagnosis}`,
+        parent_report: `Dear Parent, ${session.name} scored ${session.total_score}/10. ${diagnosis}`,
+        // Added for DiagnosticAgent consumption
+        assessment_result,
+        total_score: session.total_score
+      });
     });
   });
 };
