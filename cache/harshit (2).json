@@ -1,0 +1,163 @@
+{
+  "name": "Harshit",
+  "tags": "Percentages",
+  "already_asked": [
+    20,
+    39,
+    42,
+    55,
+    80,
+    75,
+    65,
+    76,
+    63,
+    73
+  ],
+  "current_difficulty": 10,
+  "assessment_results": [
+    {
+      "id": 20,
+      "question_text": "5% of (25% of Rs.1600) is:",
+      "option_a": "Rs. 5",
+      "option_b": "Rs. 17.5",
+      "option_c": "Rs. 20",
+      "option_d": "Rs. 25",
+      "answer": "c",
+      "difficulty": "Very easy",
+      "tags": "Percentages",
+      "student_answer": "c",
+      "status": "Correct"
+    },
+    {
+      "id": 39,
+      "question_text": "If 70% of a number added to 90 gives the result as the number itself. What is the number?",
+      "option_a": "300",
+      "option_b": "360",
+      "option_c": "420",
+      "option_d": "480",
+      "answer": "a",
+      "difficulty": "Easy",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 42,
+      "question_text": "Rs. 5300 is divided among Anuj, Manuj and Tanuj. Anuj gets 20% more amount than Manuj and Manuj gets 25% less amount than Tanuj. Find the amount (in Rs.) received by Tanuj.",
+      "option_a": "2000",
+      "option_b": "2400",
+      "option_c": "2500",
+      "option_d": "2700",
+      "answer": "a",
+      "difficulty": "Moderate",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 55,
+      "question_text": "Malini donated 25% of her income to a charity and deposited 40% of the rest in a bank. If she is left with Rs. 10,800, what is her income?",
+      "option_a": "Rs. 20,000",
+      "option_b": "Rs. 24,000",
+      "option_c": "Rs. 25,000",
+      "option_d": "Rs. 27,000",
+      "answer": "b",
+      "difficulty": "Moderate",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 80,
+      "question_text": "A teacher distributes some chocolates equally among all the students of a class. Each student gets 4 chocolates more than the total number of students in the class. If each student gets 2 chocolates less than the total number of students in the class, the teacher has to distribute 25% fewer chocolates. By what percent the total number of chocolates should be increased, such that on even distribution each student gets 8 chocolates more than the number of students in the class?",
+      "option_a": "12.5%",
+      "option_b": "16.67%",
+      "option_c": "8.33%",
+      "option_d": "15%",
+      "answer": "b",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 75,
+      "question_text": "A group of investors invest a certain amount in a startup. They make a profit of 50% of the total investment each year and reinvest 80% of the total revenue (principal + profit) in the business while distributing the remaining revenue as a bonus to the employees. They repeat this cycle for 3 years. If the revenue at the end of the third year was Rs. 75,600, what was the amount (in Rs.) of money they distributed as bonuses at the end of the 2nd year?",
+      "option_a": "12,600",
+      "option_b": "14,300",
+      "option_c": "11,600",
+      "option_d": "13,200",
+      "answer": "a",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 65,
+      "question_text": "The maximum marks for exams W, X, Y and Z are 120%, 150%, 80% and 100%, respectively, of the maximum marks for exam V. The score obtained in V, W, X, Y and Z are in the ratio 7 : 5 : 11 : 4 : 6. The total percentage score of Z and V together is 65%. What is the overall percentage score of all the exams?",
+      "option_a": "55%",
+      "option_b": "60%",
+      "option_c": "75%",
+      "option_d": "72%",
+      "answer": "b",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 76,
+      "question_text": "Raman and Kajal have a certain number of chocolates with them. Kajal says to Raman “If I give you 20% of my chocolates, I will have 12 fewer chocolates than you”. Raman says to Kajal, “If I give you chocolates equal to 37.5% of your chocolates, you will have 5 times as many chocolates as me”. What is the total number of chocolates with them?",
+      "option_a": "396",
+      "option_b": "356",
+      "option_c": "420",
+      "option_d": "442",
+      "answer": "a",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 63,
+      "question_text": "The number of employees in company A is 80% of the number of employees in company B, and the number of employees in company C is 40% less than that in company B. The average number of employees in companies A, B and C is 4800. There are 1200 and 1400 male employees in A and C, respectively. What is the average number of female employees in companies A and C?",
+      "option_a": "2900",
+      "option_b": "3200",
+      "option_c": "2500",
+      "option_d": "2600",
+      "answer": "a",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 73,
+      "question_text": "A father splits his money among his four children, A, B, C and D, in a certain way. A gets 25% of the total amount, B gets 60% of what A gets and D gets Rs. 5400 more than what C gets. If the average amount of money each child has is 10% of the father's salary, and the father's salary is Rs. 60,000, what is the amount (in Rs.) that D received?",
+      "option_a": "8400",
+      "option_b": "9600",
+      "option_c": "9900",
+      "option_d": "10500",
+      "answer": "c",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "c",
+      "status": "Correct"
+    }
+  ],
+  "total_score": 10,
+  "diagnosis": {
+    "diagnosis": "Harshit demonstrates strong performance across all assessment aspects, achieving a perfect score. Their ability to listen, grasp, retain, and apply knowledge is evident, particularly in handling Percentages-related problems, which suggests a solid understanding of concepts.",
+    "recommendations": "To maintain and further enhance their skills, Harshit should engage in more complex problem-solving scenarios that challenge their application of concepts in real-world contexts. Additionally, exploring advanced topics in Percentages and related areas can help deepen their understanding and prepare them for future assessments.",
+    "listening": 100,
+    "grasping": 100,
+    "retention": 100,
+    "application": 100
+  },
+  "reports": {
+    "student_report": "# Hey Harshit!\n\nCongratulations on your amazing performance! 🎉 You’ve achieved a perfect score, which shows just how strong your skills are. Here’s a little adventure through your learning journey:\n\n## Your Strengths:\n- **Listening Skills**: You have a fantastic ability to listen and absorb information.\n- **Understanding Concepts**: Your grasp of Percentages is impressive, and you can apply this knowledge effectively.\n- **Retention**: You remember what you learn, which is a superpower in your academic quest!\n\n## Your Challenges:\n- **Complex Problem-Solving**: To level up, you can take on more challenging problems that require you to think critically and apply your knowledge in new ways.\n\n## Next Steps:\n- **Explore Advanced Topics**: Dive into more complex scenarios and advanced concepts related to Percentages. This will not only deepen your understanding but also prepare you for future challenges.\n\nRemember, every challenge is an opportunity to grow! Keep pushing your limits, and you’ll continue to shine bright! 🌟",
+    "teacher_report": "# Harshit - Student Performance Overview\n\n- **Strengths**:\n  - Achieved a perfect score across all assessments.\n  - Strong listening and retention skills.\n  - Excellent grasp of Percentages and related concepts.\n\n- **Weaknesses**:\n  - Needs exposure to more complex problem-solving scenarios.\n\n- **Teaching Implications**:\n  - Encourage Harshit to tackle advanced topics in Percentages.\n  - Provide opportunities for real-world application of concepts to enhance critical thinking skills.",
+    "parent_report": "# Supporting Harshit at Home\n\nDear Parents,\n\nHarshit has shown remarkable skills in his assessments, particularly in understanding and applying concepts related to Percentages. Here are some ways you can support him at home:\n\n## Actionable Suggestions:\n- **Encourage Exploration**: Introduce Harshit to more complex problems that challenge his understanding and application of concepts.\n- **Real-World Applications**: Engage him in activities that involve Percentages, like budgeting or cooking, to see how these concepts work in everyday life.\n- **Study Routines**: Set aside regular time for Harshit to explore advanced topics and practice problem-solving.\n- **Positive Reinforcement**: Celebrate his achievements and encourage him to embrace challenges as opportunities for growth.\n\nYour support will be crucial in helping Harshit continue to excel and develop his skills further. Together, you can make learning an exciting adventure! 🌈"
+  }
+}

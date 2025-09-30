@@ -28,9 +28,9 @@ def save_state(state: dict, student: str) -> None:
         json.dump(state, f, indent= 2, ensure_ascii= False)
 
 
-def load_state(student: str) -> dict | None:
-    """Load the langgraph state for a given student if it exists."""
-    filename = os.path.join(CACHE_DIR, f'{sanitize_filename(student)}.json')
+def load_state(file_name: str) -> dict | None:
+    """Load the langgraph state for a given student if it exists. Input exact name of the file."""
+    filename = os.path.join(CACHE_DIR, file_name)
 
     if os.path.exists(filename):
         with open(filename, 'r', encoding= 'utf-8') as f:
