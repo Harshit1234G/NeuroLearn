@@ -9,7 +9,7 @@ def create_pdf(markdown_text: str, output_file: str) -> None:
         outputfile= output_file,
         extra_args= [
             '--pdf-engine=xelatex',
-            '-V', 'mainfont=Segoe UI Emoji',
+            '-V', 'mainfont=Times New Roman',
             '-V', 'monofont=Courier New',
             '-V', 'fontsize=12pt',
             '-V', 'geometry:margin=1in'
