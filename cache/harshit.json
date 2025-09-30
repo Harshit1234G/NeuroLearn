@@ -1,0 +1,163 @@
+{
+  "name": "Harshit",
+  "tags": "Percentages",
+  "already_asked": [
+    8,
+    25,
+    55,
+    60,
+    73,
+    61,
+    69,
+    74,
+    77,
+    71
+  ],
+  "current_difficulty": 10,
+  "assessment_results": [
+    {
+      "id": 8,
+      "question_text": "45% of 750 - 25% of 480 =?",
+      "option_a": "216",
+      "option_b": "217.50",
+      "option_c": "236.50",
+      "option_d": "245",
+      "answer": "b",
+      "difficulty": "Very easy",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 25,
+      "question_text": "If 25% of (A + B) = 80% of (A – B), A is what percentage of B?",
+      "option_a": "161.91",
+      "option_b": "176.91",
+      "option_c": "184.91",
+      "option_d": "190.91",
+      "answer": "d",
+      "difficulty": "Easy",
+      "tags": "Percentages",
+      "student_answer": "d",
+      "status": "Correct"
+    },
+    {
+      "id": 55,
+      "question_text": "Malini donated 25% of her income to a charity and deposited 40% of the rest in a bank. If she is left with Rs. 10,800, what is her income?",
+      "option_a": "Rs. 20,000",
+      "option_b": "Rs. 24,000",
+      "option_c": "Rs. 25,000",
+      "option_d": "Rs. 27,000",
+      "answer": "b",
+      "difficulty": "Moderate",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 60,
+      "question_text": "A person spent 50% of his monthly income on household expenses and 40% of the remaining on the rent. If the remaining amount left with the person is Rs. 4800, find his annual income.",
+      "option_a": "Rs. 16,000",
+      "option_b": "Rs. 18,500",
+      "option_c": "Rs. 1,72,000",
+      "option_d": "Rs. 1,92,000",
+      "answer": "d",
+      "difficulty": "Moderate",
+      "tags": "Percentages",
+      "student_answer": "d",
+      "status": "Correct"
+    },
+    {
+      "id": 73,
+      "question_text": "A father splits his money among his four children, A, B, C and D, in a certain way. A gets 25% of the total amount, B gets 60% of what A gets and D gets Rs. 5400 more than what C gets. If the average amount of money each child has is 10% of the father's salary, and the father's salary is Rs. 60,000, what is the amount (in Rs.) that D received?",
+      "option_a": "8400",
+      "option_b": "9600",
+      "option_c": "9900",
+      "option_d": "10500",
+      "answer": "c",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "c",
+      "status": "Correct"
+    },
+    {
+      "id": 61,
+      "question_text": "Joy's income is 50% more than Kim's income, and his savings are 37.5% less than Kim's expenditure. Kim's savings is 80% less than Joy's expenditure. If the combined savings of Joy and Kim is Rs. 31,500, what is the income (in Rs.) of Kim?",
+      "option_a": "42,000",
+      "option_b": "45,000",
+      "option_c": "54,000",
+      "option_d": "36,000",
+      "answer": "b",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 69,
+      "question_text": "A group of friends went out for dinner and the total bill was Rs. 6400. Aman paid twice as much as Bhavesh, Chirag paid 25% less than Bhavesh and Dinesh paid 66.67% more than Chirag. A sum of Rs. 1600 was spent on fuel which was split equally among them. What percent of the total expenses were paid by Dinesh?",
+      "option_a": "33.33%",
+      "option_b": "20%",
+      "option_c": "12.5%",
+      "option_d": "25%",
+      "answer": "d",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "d",
+      "status": "Correct"
+    },
+    {
+      "id": 74,
+      "question_text": "A store has three products, X, Y and Z, with production costs in the ratio of 8 : 5 : 7. If the store sells X, Y and Z with profits of 25%, 22%, and 20%, respectively, what is the total percentage profit from all three products?",
+      "option_a": "22.5%",
+      "option_b": "20.5%",
+      "option_c": "21.33%",
+      "option_d": "24.33%",
+      "answer": "a",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "a",
+      "status": "Correct"
+    },
+    {
+      "id": 77,
+      "question_text": "The number of members in club P to that in Q is in the ratio of p : q. In clubs P and Q, 80% and 50% of the members are male, respectively, and the difference between the number of females is 10% of the total number of members in P and Q combined. What is the value of 7p + 5q, if there are more females in Q than in P?",
+      "option_a": "45",
+      "option_b": "43",
+      "option_c": "64",
+      "option_d": "37",
+      "answer": "b",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    },
+    {
+      "id": 71,
+      "question_text": "In a school, there are a total of 1200 students, including all age groups. 62.5% of the students below the age of 10 are enrolled in the music club, out of which 40% attend the club regularly. Among the students who are aged 10 years or more, 30% of the students enrolled for music club and 25% of them attend the club regularly. If 174 students attend the club regularly, how many students in the school are aged 10 years or more?",
+      "option_a": "560",
+      "option_b": "720",
+      "option_c": "600",
+      "option_d": "840",
+      "answer": "b",
+      "difficulty": "High",
+      "tags": "Percentages",
+      "student_answer": "b",
+      "status": "Correct"
+    }
+  ],
+  "total_score": 10,
+  "diagnosis": {
+    "diagnosis": "Harshit demonstrates strong performance across all assessment aspects, achieving a perfect score. His ability to listen, grasp, retain, and apply knowledge is evident, particularly in handling percentage-related problems, which suggests a solid understanding of mathematical concepts.",
+    "recommendations": "To maintain and further enhance his skills, Harshit should engage in more complex problem-solving scenarios that challenge his application of concepts in real-world contexts. Additionally, exploring advanced topics in percentages and related areas can help deepen his understanding and prepare him for future assessments.",
+    "listening": 100,
+    "grasping": 100,
+    "retention": 100,
+    "application": 100
+  },
+  "reports": {
+    "student_report": "# Hey Harshit!\n\nCongratulations on your amazing performance! 🌟 You’ve achieved a perfect score, which shows just how strong your skills are. Let’s dive into your journey and see how you can level up even more!\n\n## Your Strengths:\n- **Listening Skills:** You have a fantastic ability to listen and absorb information.\n- **Understanding Concepts:** You grasp and apply mathematical concepts with ease, especially when it comes to percentages.\n- **Retention:** You remember what you learn, which is a superpower in your learning adventure!\n\n## Your Challenges:\n- **Complex Problem-Solving:** To become an even better mathematician, you can tackle more complex problems that challenge your skills.\n\n## Next Steps:\n- **Explore Advanced Topics:** Dive into more advanced percentage problems and related areas. This will help you deepen your understanding and prepare you for future quests in math!\n\nRemember, every challenge is an opportunity to grow. With your determination and effort, you can conquer any obstacle that comes your way. Keep up the great work, and let’s keep pushing those boundaries! 🚀",
+    "teacher_report": "# Harshit - Teacher Report\n\n## Overview:\nHarshit has demonstrated exceptional performance across all assessments, achieving a perfect score. His strengths and areas for development are outlined below:\n\n## Strengths:\n- **Listening and Comprehension:** Exhibits strong listening skills and retains information effectively.\n- **Mathematical Understanding:** Shows a solid grasp of mathematical concepts, particularly in percentages.\n\n## Areas for Development:\n- **Complex Problem-Solving:** Encourage Harshit to engage with more complex, real-world problem-solving scenarios to challenge his application of knowledge.\n- **Advanced Topics:** Introduce advanced topics in percentages to deepen his understanding and prepare him for future assessments.\n\n## Teaching Implications:\n- Provide opportunities for Harshit to explore challenging mathematical problems.\n- Consider incorporating real-world applications of math to enhance his learning experience.",
+    "parent_report": "# Supporting Harshit at Home\n\nDear Parents,\n\nHarshit has shown remarkable skills in his assessments, achieving a perfect score! Here are some ways you can support him at home to continue his growth:\n\n## Encouragement:\n- Celebrate his achievements! Acknowledge his hard work and success to keep him motivated.\n\n## Study Routines:\n- **Set a Regular Study Schedule:** Establish a consistent time for Harshit to explore math topics, ensuring he has a routine.\n- **Challenge Him:** Introduce more complex problems and real-world scenarios related to percentages to stimulate his critical thinking.\n\n## Resources:\n- **Advanced Materials:** Look for books or online resources that cover advanced topics in mathematics, particularly in percentages.\n- **Math Games:** Engage him in math-related games or puzzles that require problem-solving skills.\n\nBy providing a supportive environment and encouraging his exploration of advanced topics, you can help Harshit maintain his impressive skills and prepare for future challenges. Together, you can make his learning journey exciting and rewarding!"
+  }
+}

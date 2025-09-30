@@ -7,15 +7,25 @@ from backend.config import CACHE_DIR
 def save_state(state: dict, student: str) -> None:
     """Save the langgraph state for a given student."""
     os.makedirs(CACHE_DIR, exist_ok= True)
-    filename = os.path.join(CACHE_DIR, f'{sanitize_filename(student)}.json')
+    
+    base_name = sanitize_filename(student)
+    filename = os.path.join(CACHE_DIR, f'{base_name}.json')
+
+    # If file exists, generate a new name with (n)
+    if os.path.exists(filename):
+        counter = 2
+
+        while True:
+            alt_filename = os.path.join(CACHE_DIR, f'{base_name} ({counter}).json')
+
+            if not os.path.exists(alt_filename):
+                filename = alt_filename
+                break
+
+            counter += 1
 
     with open(filename, 'w', encoding= 'utf-8') as f:
-        json.dump(
-            state, 
-            f, 
-            indent= 2, 
-            ensure_ascii= False
-        )
+        json.dump(state, f, indent= 2, ensure_ascii= False)
 
 
 def load_state(student: str) -> dict | None:
